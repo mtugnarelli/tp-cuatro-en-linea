@@ -12,16 +12,16 @@ import javafx.stage.Stage;
  * Captura errores en tiempo de ejecución y muestra una ventana con el detalle.
  */
 public class MostrarError implements UncaughtExceptionHandler {
-	
+
 	@Override
 	public void uncaughtException(Thread hilo, Throwable error) {
 
 		Stage escenario = new Stage();
-		
+
 		Text mensaje = new Text(error.getMessage());
-		
+
 		BorderPane panel = new BorderPane();
-		panel.setPadding(new Insets(10,20,20,10));
+		panel.setPadding(new Insets(10, 20, 20, 10));
 		panel.setCenter(mensaje);
 
 		Scene escena = new Scene(panel);

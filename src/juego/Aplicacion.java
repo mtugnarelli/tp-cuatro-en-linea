@@ -21,9 +21,9 @@ import javafx.stage.Stage;
 public class Aplicacion extends Application {
 
 	public static final String TITULO = "Cuatro en Lí­nea";
-	
+
 	private GridPane grilla;
-	
+
 	private TextField campoNombreJugadorRojo;
 	private TextField campoNombreJugadorAmarillo;
 
@@ -49,10 +49,10 @@ public class Aplicacion extends Application {
 		grilla.setAlignment(Pos.CENTER);
 		grilla.setHgap(20);
 		grilla.setVgap(20);
-		
+
 		Text textoTitulo = new Text(TITULO);
 		textoTitulo.setFont(new Font(16));
-		
+
 		crearControles();
 
 		grilla.add(textoTitulo, 0, 0, 2, 1);
@@ -65,7 +65,7 @@ public class Aplicacion extends Application {
 		grilla.add(new Label("Columnas"), 0, 4);
 		grilla.add(campoColumnas, 1, 4);
 		grilla.add(botonIniciar, 0, 5, 2, 1);
-		
+
 		GridPane.setHalignment(botonIniciar, HPos.CENTER);
 		GridPane.setHalignment(textoTitulo, HPos.CENTER);
 	}
@@ -74,37 +74,37 @@ public class Aplicacion extends Application {
 
 		campoNombreJugadorRojo = new TextField("rojo");
 		campoNombreJugadorAmarillo = new TextField("amarillo");
-		
+
 		campoColumnas = new TextField("7");
 		campoFilas = new TextField("7");
-		
+
 		botonIniciar = new Button("Iniciar");
 		botonIniciar.setOnAction(new IniciarJuego(this));
 	}
-	
+
 	/**
-	 * post: crea un juego CuatroEnLinea, lo asocia a una Tablero 
-	 * 		 y comienza su ejecución.
+	 * post: crea un juego CuatroEnLinea, lo asocia a una Tablero y comienza su
+	 * ejecución.
 	 * 
 	 */
 	public void iniciar() {
-		
+
 		String nombreJugadorRojo = campoNombreJugadorRojo.getText();
 		String nombreJugadorAmarillo = campoNombreJugadorAmarillo.getText();
 		int filas = Integer.parseInt(campoFilas.getText());
 		int columnas = Integer.parseInt(campoColumnas.getText());
-		
-		CuatroEnLinea juego = new CuatroEnLinea(filas, columnas, 
-												nombreJugadorRojo, nombreJugadorAmarillo);
-		
+
+		CuatroEnLinea juego = new CuatroEnLinea(filas, columnas,
+				nombreJugadorRojo, nombreJugadorAmarillo);
+
 		Tablero tablero = new Tablero(juego);
 		tablero.mostrar();
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		Thread.setDefaultUncaughtExceptionHandler(new MostrarError());
-		
+
 		launch(args);
 	}
 }
